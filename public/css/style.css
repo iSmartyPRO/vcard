@@ -1,0 +1,48 @@
+html {
+    font-family: sans-serif;
+    font-size: 14px / 20px;
+    color: #444;
+}
+
+a[href^="tel:"] {
+    color: #444;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.4;
+}
+
+h2 {
+    margin: 40px 0 20px;
+    color: #007fc4;
+}
+
+p,
+ul,
+ol {
+    margin: 0 0 15px 0;
+}
+
+.uk-button-genco {
+    background: #213250;
+    color: #fff;
+    text-transform: none;
+}
+
+.uk-button-genco:hover {
+    background: #ff6600;
+}
+
+.uk-card-radius {
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+p {
+    color: #666
+}

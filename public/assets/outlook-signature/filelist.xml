@@ -1,0 +1,16 @@
+<xml xmlns:o="urn:schemas-microsoft-com:office:office">
+ <o:MainFile HRef="../#baseName"/>
+ <o:File HRef="themedata.thmx"/>
+ <o:File HRef="colorschememapping.xml"/>
+ <o:File HRef="logo.jpg"/>
+ <o:File HRef="qrCode.png"/>
+ <o:File HRef="filelist.xml"/>
+ <o:File HRef="facebook.jpg"/>
+ <o:File HRef="instagram.jpg"/>
+ <o:File HRef="linkedin.jpg"/>
+ <o:File HRef="telegram.jpg"/>
+ <o:File HRef="twitter.jpg"/>
+ <o:File HRef="viber.jpg"/>
+ <o:File HRef="whatsapp.jpg"/>
+ <o:File HRef="youtube.jpg"/>
+</xml>

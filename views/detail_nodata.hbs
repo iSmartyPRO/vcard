@@ -1,0 +1,16 @@
+<div class="uk-card uk-card-radius uk-card-default uk-card-body uk-width-1-1@m">
+  <div uk-grid>
+    <div class="uk-width-auto">
+      <img src="/user_icon.svg" width="200px" alt="">
+    </div>
+    <div class="uk-width-expand">
+      <h3 class="uk-card-title uk-text-bold uk-margin-remove">Данные о запрашиваемом контакте не найдены</h3>
+      <p></p>
+      <p class="uk-text-bold uk-margin-remove">Центральный офис</p>
+      <p class="uk-margin-remove"><span uk-icon="icon: location"></span> {{config.corporateAddress}}
+      <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.corporatePhone}}</p>
+      <p class="uk-margin-remove"><span uk-icon="icon: mail"></span> <a href="mailto:{{config.corporateEmail}}" class="uk-text-danger">{{config.corporateEmail}}</a>,</p>
+      <p class="uk-margin-remove"><span uk-icon="icon: world"></span> <a href="https://{{config.corporateWeb}}" class="uk-text-danger">{{config.corporateWeb}}</a></p>
+    </div>
+  </div>
+</div>

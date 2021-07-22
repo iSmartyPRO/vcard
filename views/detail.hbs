@@ -1,0 +1,38 @@
+<div class="uk-card uk-card-radius uk-card-default uk-card-body">
+  <div class="uk-grid-match" uk-grid>
+    <div class="uk-width-auto@m uk-width-1-1@s">
+      <div class="uk-width-auto">
+        {{#if user.thumbnailPhoto}}
+        <img src="data:image/jpeg;base64, {{thumb}}" width="200px" alt="" class="uk-border-circle">
+        {{else}}
+        <img src="/user_icon.svg" width="200px" alt="">
+        {{/if}}
+      </div>
+    </div>
+    <div class="uk-width-expand@m uk-width-1-1@s">
+      <div class="uk-width-expand">
+        <h3 class="uk-card-title uk-text-bold uk-margin-remove">{{user.description}}</h3>
+        <p class="uk-margin-remove uk-text-italic">{{user.title}}, {{user.department}}</p>
+        <p></p>
+        {{#if user.streetAddress}}
+        <p class="uk-margin-remove"><span uk-icon="icon: location"></span> {{user.streetAddress}}</p>
+        {{else}}
+        <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.corporateAddress}}</p>
+        {{/if}}
+        {{#if user.pager}}
+        <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.corporatePhone}}, ({{user.pager}})</p>
+        {{else}}
+        <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.corporatePhone}}</p>
+        {{/if}}
+        {{#if user.mobile}}
+        <p class="uk-margin-remove"><span uk-icon="icon: phone"></span> {{user.mobile}}</p>
+        {{/if}}
+        <p class="uk-margin-remove"><span uk-icon="icon: mail"></span> <a href="mailto:{{user.mail}}" class="uk-text-danger">{{user.mail}}</a></p>
+        <p class="uk-margin-remove"><span uk-icon="icon: world"></span> <a href="https://{{config.corporateWeb}}" class="uk-text-danger">{{config.corporateWeb}}</a></p>
+        <p class="uk-margin">
+          <a href="/vcfs/{{user.sAMAccountName}}.vcf" download="GENCO vCard - {{user.description}}.vcf" class="uk-button uk-button-genco"><span uk-icon="icon: download"></span> vCard</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

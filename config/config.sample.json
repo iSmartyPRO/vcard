@@ -1,0 +1,55 @@
+{
+    "APP_PORT": 3000,
+    "APP_NAME": "VCard System",
+    "mongoURI": "mongodb://vCardDBUser:vCardDBPass@mongoDBHost/vcard-db",
+    "AD_Server": "dc.example.com",
+    "AD_Username": "vcard-user@example.com",
+    "AD_Password": "vCardPassword",
+    "qrCodeLogo": "C:\\apps\\vcard.example.com\\public\\assets\\qrCode_for_background.jpg",
+    "public": {
+        "corporatePhone": "+7 (999) 123 45 67",
+        "corporateWebsite": "www.example.com",
+        "vCardUri": "https://vcard.example.com",
+        "regards": "С уважением,",
+        "templates": [
+          {
+            "name":"Новое письмо",
+            "fileName":"New.htm"
+          },
+          {
+            "name":"Ответное письмо",
+            "fileName":"Reply.htm"
+          }
+        ],
+        "socialNetwork": {
+          "enabled": true,
+          "networks": {
+            "instagram": "https://www.instagram.com/companyprofile",
+            "facebook": null,
+            "telegram": null,
+            "viber": null,
+            "whatsapp": null,
+            "youtube": null,
+            "twitter": null,
+            "linkedin": "https://www.linkedin.com/company/profileId"
+          }
+        },
+        "privateSocialNetwork": {
+          "enabled": true
+        },
+        "filelist": [
+          "logo.jpg",
+          "colorschememapping.xml",
+          "filelist.xml",
+          "themedata.thmx",
+          "facebook.jpg",
+          "instagram.jpg",
+          "linkedin.jpg",
+          "telegram.jpg",
+          "twitter.jpg",
+          "viber.jpg",
+          "whatsapp.jpg",
+          "youtube.jpg"
+        ]
+      }
+}
