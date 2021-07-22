@@ -18,7 +18,7 @@ This application is designed to store and display Virtual Cards of Active Direct
 - configure DNS record Ex. vcard.example.com
 - clone project
 - rename config.sample.json to config.json
-- edit config.son with your preferred data (including credentials to AD and MongoDB)
+- edit config.json with your preferred data (including credentials to AD and MongoDB)
 - install dependencies with command npm i
 - run project in dev mode npm start dev
 - Enjoy
