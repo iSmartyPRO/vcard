@@ -15,20 +15,20 @@
         <p class="uk-margin-remove uk-text-italic">{{user.title}}, {{user.department}}</p>
         <p></p>
         {{#if user.streetAddress}}
-        <p class="uk-margin-remove"><span uk-icon="icon: location"></span> {{user.streetAddress}}</p>
+        <p class="uk-margin-remove"><span uk-icon="icon: location"></span> {{user.l}}, {{user.streetAddress}}</p>
         {{else}}
-        <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.corporateAddress}}</p>
+        <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.public.corporateAddress}}</p>
         {{/if}}
         {{#if user.pager}}
-        <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.corporatePhone}}, ({{user.pager}})</p>
+        <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.public.corporatePhone}}, ({{user.pager}})</p>
         {{else}}
-        <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.corporatePhone}}</p>
+        <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.public.corporatePhone}}</p>
         {{/if}}
         {{#if user.mobile}}
         <p class="uk-margin-remove"><span uk-icon="icon: phone"></span> {{user.mobile}}</p>
         {{/if}}
         <p class="uk-margin-remove"><span uk-icon="icon: mail"></span> <a href="mailto:{{user.mail}}" class="uk-text-danger">{{user.mail}}</a></p>
-        <p class="uk-margin-remove"><span uk-icon="icon: world"></span> <a href="https://{{config.corporateWeb}}" class="uk-text-danger">{{config.corporateWeb}}</a></p>
+        <p class="uk-margin-remove"><span uk-icon="icon: world"></span> <a href="https://{{config.public.corporateWebsite}}" class="uk-text-danger">{{config.public.corporateWebsite}}</a></p>
         <p class="uk-margin">
           <a href="/vcfs/{{user.sAMAccountName}}.vcf" download="GENCO vCard - {{user.description}}.vcf" class="uk-button uk-button-genco"><span uk-icon="icon: download"></span> vCard</a>
         </p>

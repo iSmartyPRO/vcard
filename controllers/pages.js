@@ -12,9 +12,6 @@ module.exports.home = (req, res) => {
 
 module.exports.detail = async(req, res) => {
     let user = await ADUser.findOne({ sAMAccountName: req.params.sAMAccountName }).lean()
-    let corporatePhone = config.public.corporatePhone
-    let corporateWeb = config.public.corporateWeb
-        // check if user exist
     if (user) {
         if (user.thumbnailPhoto) {
             var thumb = new Buffer.from(user.thumbnailPhoto.buffer, 'binary').toString('base64');
