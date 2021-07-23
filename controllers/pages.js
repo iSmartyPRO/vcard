@@ -110,7 +110,7 @@ FN;CHARSET=utf-8:${fName} ${lName}
 ORG;CHARSET=utf-8:${d[i].company};${d[i].department}
 TITLE;CHARSET=utf-8:${d[i].title}${vCardMobile}
 TEL;WORK;VOICE:${config.public.corporatePhone}${vCardAdrWork}
-URL;WORK:https://${config.public.corporateWeb}
+URL;WORK:https://${config.public.corporateWebsite}
 EMAIL;PREF;INTERNET:${d[i].mail}${vCardThumb}
 END:VCARD`
                 await fs.writeFileSync(path.join(__dirname, '..', 'public', 'vcfs', `${d[i].sAMAccountName}.vcf`), vCardContent)
