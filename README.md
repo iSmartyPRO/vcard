@@ -6,7 +6,7 @@ This application is designed to store and display Virtual Cards of Active Direct
 - PowerShell
 - MongoDB
 
-## Feature:
+## Features:
 - web based Active Directory show contact info
 - generate qrCodes to web profile of employee
 - generate VCF files for easy import them to Address Book (with photo embedded)
