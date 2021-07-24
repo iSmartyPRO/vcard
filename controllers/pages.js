@@ -13,10 +13,10 @@ module.exports.home = (req, res) => {
 module.exports.detail = async(req, res) => {
     let user = await ADUser.findOne({ sAMAccountName: req.params.sAMAccountName }).lean()
     let messengers = {}
-    messengers.whatsapp = user.whatsapp ? `https://wa.me/${user.whatsapp.replace(/\D/g, "")}` : null
-    messengers.telegram = user.telegram
     let socialLinks = config.public.socialNetwork.networks
     if (user) {
+        if (user.whatsapp) messengers.whatsapp = `https://wa.me/${user.whatsapp.replace(/\D/g, "")}`
+        messengers.telegram = user.telegram
         if (user.thumbnailPhoto) {
             var thumb = new Buffer.from(user.thumbnailPhoto.buffer, 'binary').toString('base64');
         }

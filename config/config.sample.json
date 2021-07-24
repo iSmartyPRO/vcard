@@ -7,49 +7,50 @@
     "AD_Password": "vCardPassword",
     "qrCodeLogo": "C:\\apps\\vcard.example.com\\public\\assets\\qrCode_for_background.jpg",
     "public": {
+        "corporateAddress": "Your company address here",
         "corporatePhone": "+7 (999) 123 45 67",
         "corporateWebsite": "www.example.com",
+        "corporateEmail": "info@gencoindustry.com",
         "vCardUri": "https://vcard.example.com",
         "regards": "С уважением,",
-        "templates": [
-          {
-            "name":"Новое письмо",
-            "fileName":"New.htm"
-          },
-          {
-            "name":"Ответное письмо",
-            "fileName":"Reply.htm"
-          }
+        "templates": [{
+                "name": "Новое письмо",
+                "fileName": "New.htm"
+            },
+            {
+                "name": "Ответное письмо",
+                "fileName": "Reply.htm"
+            }
         ],
         "socialNetwork": {
-          "enabled": true,
-          "networks": {
-            "instagram": "https://www.instagram.com/companyprofile",
-            "facebook": null,
-            "telegram": null,
-            "viber": null,
-            "whatsapp": null,
-            "youtube": null,
-            "twitter": null,
-            "linkedin": "https://www.linkedin.com/company/profileId"
-          }
+            "enabled": true,
+            "networks": {
+                "instagram": "https://www.instagram.com/companyprofile",
+                "facebook": null,
+                "telegram": null,
+                "viber": null,
+                "whatsapp": null,
+                "youtube": null,
+                "twitter": null,
+                "linkedin": "https://www.linkedin.com/company/profileId"
+            }
         },
         "privateSocialNetwork": {
-          "enabled": true
+            "enabled": true
         },
         "filelist": [
-          "logo.jpg",
-          "colorschememapping.xml",
-          "filelist.xml",
-          "themedata.thmx",
-          "facebook.jpg",
-          "instagram.jpg",
-          "linkedin.jpg",
-          "telegram.jpg",
-          "twitter.jpg",
-          "viber.jpg",
-          "whatsapp.jpg",
-          "youtube.jpg"
+            "logo.jpg",
+            "colorschememapping.xml",
+            "filelist.xml",
+            "themedata.thmx",
+            "facebook.jpg",
+            "instagram.jpg",
+            "linkedin.jpg",
+            "telegram.jpg",
+            "twitter.jpg",
+            "viber.jpg",
+            "whatsapp.jpg",
+            "youtube.jpg"
         ]
-      }
+    }
 }
