@@ -34,5 +34,8 @@ app.use(express.static('public'))
 app.use('/public/uikit', express.static(path.join(__dirname, 'node_modules', 'uikit', 'dist')))
 app.use(morgan('combined'))
 app.use("/", pagesRoutes)
+app.get("*", function(req, res) {
+    res.redirect("/")
+})
 
 module.exports = app
