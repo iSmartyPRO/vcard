@@ -12,18 +12,22 @@ module.exports.home = (req, res) => {
 
 module.exports.detail = async(req, res) => {
     let user = await ADUser.findOne({ sAMAccountName: req.params.sAMAccountName }).lean()
+    let messengers = {}
+    messengers.whatsapp = user.whatsapp ? `https://wa.me/${user.whatsapp.replace(/\D/g, "")}` : null
+    messengers.telegram = user.telegram
+    let socialLinks = config.public.socialNetwork.networks
     if (user) {
         if (user.thumbnailPhoto) {
             var thumb = new Buffer.from(user.thumbnailPhoto.buffer, 'binary').toString('base64');
         }
-        res.render('detail', { user, config, thumb })
+        res.render('detail', { user, config, thumb, messengers, socialLinks })
     } else {
         // if user doesn't exist display main info about company
         res.render('detail_nodata', { config })
     }
 }
 
-module.exports.update = async (req, res) => {
+module.exports.update = async(req, res) => {
     await AD.getADUsers().then(async(d) => {
         console.log(`Got ${d.length} users from Active Directory`)
         if (d.length) {

@@ -29,6 +29,18 @@
         {{/if}}
         <p class="uk-margin-remove"><span uk-icon="icon: mail"></span> <a href="mailto:{{user.mail}}" class="uk-text-danger">{{user.mail}}</a></p>
         <p class="uk-margin-remove"><span uk-icon="icon: world"></span> <a href="https://{{config.public.corporateWebsite}}" class="uk-text-danger">{{config.public.corporateWebsite}}</a></p>
+        <p class="uk-margin-small-top">
+          {{#each messengers}}
+          {{#if this}}
+            <a href="{{this}}" target="_blank"><img src="/assets/outlook-signature/{{@key}}.jpg" width="30px"></a>
+          {{/if}}
+          {{/each}}
+          {{#each socialLinks}}
+          {{#if this}}
+            <a href="{{this}}" target="_blank"><img src="/assets/outlook-signature/{{@key}}.jpg" width="30px"></a>
+          {{/if}}
+          {{/each}}
+        </p>
         <p class="uk-margin">
           <a href="/vcfs/{{user.sAMAccountName}}.vcf" download="GENCO vCard - {{user.description}}.vcf" class="uk-button uk-button-genco"><span uk-icon="icon: download"></span> vCard</a>
         </p>
