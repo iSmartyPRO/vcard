@@ -146,6 +146,7 @@ function Write-Signature($md5, $template) {
         -replace "#phones",$phones `
         -replace "#mail",$uInfo.mail `
         -replace "#corporateWebsite ",$config.corporateWebsite  `
+        -replace "#qrCodeUrl", "$vCardUri/p/$username"  `
         -replace "#socialLinks",$socialLinksHtml  `
         -replace "#head",$head `
         -replace "#regards", $config.regards `
@@ -160,6 +161,7 @@ function Write-Signature($md5, $template) {
         -replace "#phones",$phones `
         -replace "#mail",$uInfo.mail `
         -replace "#corporateWebsite ",$config.corporateWebsite  `
+        -replace "#qrCodeUrl", "$vCardUri/p/$username"  `
         -replace "#socialLinks",$socialLinksHtml  `
         -replace "#head","" `
         -replace "#regards", $config.regards `
@@ -174,6 +176,7 @@ function Write-Signature($md5, $template) {
         -replace "#phones",$phones `
         -replace "#mail",$uInfo.mail `
         -replace "#corporateWebsite ",$config.corporateWebsite  `
+        -replace "#qrCodeUrl", ""  `
         -replace "#socialLinks",""  `
         -replace "#head","" `
         -replace "#regards", $config.regards `
