@@ -11,6 +11,7 @@
         "corporateAddress": "Your company address here",
         "corporatePhone": "+7 (999) 123 45 67",
         "corporateWebsite": "www.example.com",
+        "corporateWebsiteWProtcol": "https://www.gencoindustry.com",
         "corporateEmail": "info@gencoindustry.com",
         "vCardUri": "https://vcard.example.com",
         "regards": "С уважением,",
