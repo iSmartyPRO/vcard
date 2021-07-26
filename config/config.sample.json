@@ -7,6 +7,8 @@
     "AD_Password": "vCardPassword",
     "qrCodeLogo": "C:\\apps\\vcard.example.com\\public\\assets\\qrCode_for_background.jpg",
     "cronUpdateUsers": "0 4 * * *",
+    "noAvatarIcon": "/assets/user_icon.svg",
+    "vCardBackground": "/assets/bg.jpg",
     "public": {
         "corporateAddress": "Your company address here",
         "corporatePhone": "+7 (999) 123 45 67",

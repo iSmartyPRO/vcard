@@ -5,7 +5,7 @@
         {{#if user.thumbnailPhoto}}
         <img src="data:image/jpeg;base64, {{thumb}}" width="200px" alt="" class="uk-border-circle">
         {{else}}
-        <img src="/assets/user_icon.svg" width="200px" alt="">
+        <img src="{{config.noAvatarIcon}}" width="200px" alt="">
         {{/if}}
       </div>
     </div>

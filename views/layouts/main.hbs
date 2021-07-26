@@ -1,14 +1,16 @@
 {{> head }}
+
 <body>
-    <div class="uk-light wrap uk-background-norepeat uk-background-cover uk-background-center-center uk-cover-container uk-background-secondary">
-      <img data-srcset="/assets/bg.jpg"
-           sizes="100vw"
-           data-src="/assets/bg.jpg" alt="" data-uk-cover data-uk-img
-      >
-      <div class="uk-flex uk-flex-center uk-flex-middle uk-height-viewport uk-position-z-index uk-position-relative" data-uk-height-viewport="min-height: 400" style="background-color: rgba(0, 0, 0, 0.6);">
-    <div class="uk-container">
+  <div
+    class="uk-light wrap uk-background-norepeat uk-background-cover uk-background-center-center uk-cover-container uk-background-secondary">
+    <img data-srcset="{{config.vCardBackground}}" sizes="100vw" data-src="{{config.vCardBackground}}" alt=""
+      data-uk-cover data-uk-img>
+    <div class="uk-flex uk-flex-center uk-flex-middle uk-height-viewport uk-position-z-index uk-position-relative"
+      data-uk-height-viewport="min-height: 400" style="background-color: rgba(0, 0, 0, 0.6);">
+      <div class="uk-container">
         {{{ body }}}
-    </div>
-    {{> footer }}
+      </div>
+      {{> footer }}
 </body>
+
 </html>
