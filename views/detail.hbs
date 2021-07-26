@@ -5,7 +5,7 @@
         {{#if user.thumbnailPhoto}}
         <img src="data:image/jpeg;base64, {{thumb}}" width="200px" alt="" class="uk-border-circle">
         {{else}}
-        <img src="/user_icon.svg" width="200px" alt="">
+        <img src="/assets/user_icon.svg" width="200px" alt="">
         {{/if}}
       </div>
     </div>
@@ -20,29 +20,34 @@
         <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.public.corporateAddress}}</p>
         {{/if}}
         {{#if user.pager}}
-        <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.public.corporatePhone}}, ({{user.pager}})</p>
+        <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.public.corporatePhone}},
+          ({{user.pager}})</p>
         {{else}}
         <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.public.corporatePhone}}</p>
         {{/if}}
         {{#if user.mobile}}
         <p class="uk-margin-remove"><span uk-icon="icon: phone"></span> {{user.mobile}}</p>
         {{/if}}
-        <p class="uk-margin-remove"><span uk-icon="icon: mail"></span> <a href="mailto:{{user.mail}}" class="uk-text-danger">{{user.mail}}</a></p>
-        <p class="uk-margin-remove"><span uk-icon="icon: world"></span> <a href="https://{{config.public.corporateWebsite}}" class="uk-text-danger">{{config.public.corporateWebsite}}</a></p>
+        <p class="uk-margin-remove"><span uk-icon="icon: mail"></span> <a href="mailto:{{user.mail}}"
+            class="uk-text-danger">{{user.mail}}</a></p>
+        <p class="uk-margin-remove"><span uk-icon="icon: world"></span> <a
+            href="https://{{config.public.corporateWebsite}}"
+            class="uk-text-danger">{{config.public.corporateWebsite}}</a></p>
         <p class="uk-margin-small-top">
           {{#each messengers}}
           {{#if this}}
-            <a href="{{this}}" target="_blank"><img src="/assets/outlook-signature/{{@key}}.jpg" width="30px"></a>
+          <a href="{{this}}" target="_blank"><img src="/assets/outlook-signature/{{@key}}.jpg" width="30px"></a>
           {{/if}}
           {{/each}}
           {{#each socialLinks}}
           {{#if this}}
-            <a href="{{this}}" target="_blank"><img src="/assets/outlook-signature/{{@key}}.jpg" width="30px"></a>
+          <a href="{{this}}" target="_blank"><img src="/assets/outlook-signature/{{@key}}.jpg" width="30px"></a>
           {{/if}}
           {{/each}}
         </p>
         <p class="uk-margin">
-          <a href="/vcfs/{{user.sAMAccountName}}.vcf" download="GENCO vCard - {{user.description}}.vcf" class="uk-button uk-button-genco"><span uk-icon="icon: download"></span> vCard</a>
+          <a href="/vcfs/{{user.sAMAccountName}}.vcf" download="GENCO vCard - {{user.description}}.vcf"
+            class="uk-button uk-button-genco"><span uk-icon="icon: download"></span> vCard</a>
         </p>
       </div>
     </div>
