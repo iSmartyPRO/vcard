@@ -28,15 +28,17 @@ module.exports.detail = async(req, res) => {
 }
 
 module.exports.update = async(req, res) => {
+    let result = {}
     await AD.getADUsers().then(async(d) => {
-        console.log(`Got ${d.length} users from Active Directory`)
+        result.adUserCount = d.length
+
         if (d.length) {
             // Delete all docs in Database
             await ADUser.deleteMany({}, (err) => {
                 if (err) console.warn("Error: ", err)
-                console.log('Deleted all Docs')
+                result.deletedAllDocs = 'Deleted all Docs'
             })
-            console.log('Deleted all records in database')
+            result.deletedAllDocsDB = 'Deleted all records in database'
 
             // Delete all vcf files
             fs.readdir(path.join(__dirname, '..', 'public', 'vcfs'), (err, files) => {
@@ -54,7 +56,7 @@ module.exports.update = async(req, res) => {
                     }
                 }
             })
-            console.log('Deleted all VCF files')
+            result.deletedVcf = 'Deleted all VCF files'
 
             // Delete all QR Code files
             fs.readdir(path.join(__dirname, '..', 'public', 'qrCodes'), (err, files) => {
@@ -72,7 +74,7 @@ module.exports.update = async(req, res) => {
                     }
                 }
             })
-            console.log('Deleted all QR Code files')
+            result.deletedQRCodes = 'Deleted all QR Code files'
 
 
             // Add users to database
@@ -97,7 +99,7 @@ module.exports.update = async(req, res) => {
                     telegram: d[i].ipPhone
                 }).save()
             }
-            console.log("Users saved to DataBase")
+            result.usersSaved = "Users saved to DataBase"
 
             // Generate vCard files in vcfs folder
             for (let i = 0; i < d.length; i++) {
@@ -119,7 +121,7 @@ EMAIL;PREF;INTERNET:${d[i].mail}${vCardThumb}
 END:VCARD`
                 await fs.writeFileSync(path.join(__dirname, '..', 'public', 'vcfs', `${d[i].sAMAccountName}.vcf`), vCardContent)
             }
-            console.log("Generated VCF files")
+            result.generateVcf = "Generated VCF files"
 
             // Generate QR Codes in qrCodes folder
             // QR Code for Official website
@@ -174,15 +176,15 @@ END:VCARD`
                     path: path.join(__dirname, '..', 'public', 'qrCodes', `${d[i].sAMAccountName}.png`),
                 })
             }
-            console.log('Generated QR Codes files')
+            result.generateQRCodes = 'Generated QR Codes files'
 
 
-            console.log('Completed')
+            result.status = 'Completed'
         } else {
-            console.warn('No data')
+            result.status = 'No data'
         }
     });
-    res.render('update')
+    res.json(result)
 }
 
 module.exports.api = async(req, res) => {
