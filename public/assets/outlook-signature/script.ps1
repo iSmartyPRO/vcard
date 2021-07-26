@@ -254,19 +254,7 @@ function Commit-Signatures($templates) {
 }
 
 function link2social($networkName, $networkUrl){
-    return "<a href='$($networkUrl)'><span lang=EN-US style='color:windowtext; mso-ansi-language:EN-US;mso-no-proof:yes;text-decoration:none;text-underline:none'>
-              <!--[if gte vml 1]>
-                  <v:shape id='$($networkName)' o:spid='_x0000_i1025' type='#defaultImageType' href='$($networkUrl)' style='width:25pt;height:25pt;visibility:visible;mso-wrap-style:square' o:button='t'>
-                    <v:fill o:detectmouseclick='t'/>
-                    <v:imagedata src='#folder/$($networkName).jpg' o:title='$($networkName)'/>
-                  </v:shape>
-              <![endif]-->
-              <![if !vml]>
-              <span style='mso-ignore:vglayout'>
-                <img border=0 width=35 height=35 src='#folder/$($networkName).jpg' v:shapes='$($networkName)'>
-              </span>
-              <![endif]>
-              </a><span style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>&nbsp;</span></span>"
+    return "<a href='$($networkUrl)'><span lang=EN-US style='color:windowtext; mso-ansi-language:EN-US;mso-no-proof:yes;text-decoration:none;text-underline:none'><!--[if gte vml 1]><v:shape id='$($networkName)' o:spid='_x0000_i1025' type='#defaultImageType' href='$($networkUrl)' style='width:25pt;height:25pt;visibility:visible;mso-wrap-style:square' o:button='t'><v:fill o:detectmouseclick='t'/><v:imagedata src='#folder/$($networkName).jpg' o:title='$($networkName)'/></v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout'><img border=0 width=35 height=35 src='#folder/$($networkName).jpg' v:shapes='$($networkName)'></span><![endif]></a><span style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'>&nbsp;</span></span>"
 }
 
 
