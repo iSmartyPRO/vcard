@@ -126,7 +126,7 @@ END:VCARD`
             // Generate QR Codes in qrCodes folder
             // QR Code for Official website
             let options = {
-                text: `https://www.gencoindustry.com/`,
+                text: `${config.public.corporateWebsiteWProtcol}`,
                 width: 500,
                 height: 500,
                 colorDark: "#2F3D58",
@@ -150,7 +150,7 @@ END:VCARD`
             // Generate QR Codes for users
             for (let i = 0; i < d.length; i++) {
                 let options = {
-                    text: `https://vcard.gencoindustry.com/p/${d[i].sAMAccountName}/`,
+                    text: `${config.public.vCardUri}/p/${d[i].sAMAccountName}/`,
                     width: 500,
                     height: 500,
                     colorDark: "#2F3D58",
