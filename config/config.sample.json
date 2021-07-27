@@ -2,6 +2,8 @@
     "APP_PORT": 3000,
     "APP_NAME": "VCard System",
     "mongoURI": "mongodb://vCardDBUser:vCardDBPass@mongoDBHost/vcard-db",
+    "companyName": "Company Name",
+    "companyLogoWhite": "/assets/logo.svg",
     "AD_Server": "dc.example.com",
     "AD_Username": "vcard-user@example.com",
     "AD_Password": "vCardPassword",
@@ -11,6 +13,7 @@
     "noAvatarIcon": "/assets/user_icon.svg",
     "vCardBackground": "/assets/bg.jpg",
     "vCardBackgroundTransparency": 0.6,
+    "logoWidth": "200px",
     "public": {
         "corporateAddress": "Your company address here",
         "corporatePhone": "+7 (999) 123 45 67",

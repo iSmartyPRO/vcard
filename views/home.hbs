@@ -1,10 +1,15 @@
-        <div class="uk-container uk-container-small uk-flex-auto uk-text-center" data-uk-scrollspy="target: > .animate; cls: uk-animation-slide-bottom-small uk-invisible; delay: 300">
-          <h1 class="uk-heading-primary animate uk-invisible" style="font-weight: 700;"><img src="/assets/logo.svg" width="300px" alt=""></h1>
-          <div class="uk-width-4-5@m uk-margin-auto animate uk-invisible">
-            <p class="lead">Контакты сотрудников компании ГЕНДЖО<br>При сканировании QR кода будет доступна полная контактная информация сотрудника.</p>
-          </div>
-          <div class="uk-margin-medium-top animate uk-invisible" data-uk-margin data-uk-scrollspy-class="uk-animation-fade uk-invisible">
-            <a class="uk-button uk-button-default uk-button-large uk-width-2-3 uk-width-auto@s" data-uk-icon="arrow-right" title="Открыть официальный сайт компании" href="https://www.gencoindustry.com/">САЙТ КОМПАНИИ</a>
-          </div>
-        </div>
-        <!-- /TEXT -->
+<div class="uk-container uk-container-small uk-flex-auto uk-text-center"
+  data-uk-scrollspy="target: > .animate; cls: uk-animation-slide-bottom-small uk-invisible; delay: 300">
+  <h1 class="uk-heading-primary animate uk-invisible" style="font-weight: 700;"><img src="{{config.companyLogoWhite}}"
+      width="{{config.logoWidth}}" alt=""></h1>
+  <div class="uk-width-4-5@m uk-margin-auto animate uk-invisible">
+    <p class="uk-text-white">{{config.companyName}}<br>При сканировании QR кода будет доступна
+      полная контактная информация сотрудника.</p>
+  </div>
+  <div class="uk-margin-medium-top animate uk-invisible" data-uk-margin
+    data-uk-scrollspy-class="uk-animation-fade uk-invisible">
+    <a class="uk-button uk-button-default uk-button-large uk-width-2-3 uk-width-auto@s" data-uk-icon="arrow-right"
+      title="Открыть официальный сайт компании" href="{{config.public.corporateWebsiteWProtcol}}">САЙТ КОМПАНИИ</a>
+  </div>
+</div>
+<!-- /TEXT -->
