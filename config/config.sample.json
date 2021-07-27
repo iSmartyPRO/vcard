@@ -48,7 +48,6 @@
             "enabled": true
         },
         "filelist": [
-            "logo.jpg",
             "colorschememapping.xml",
             "filelist.xml",
             "themedata.thmx",

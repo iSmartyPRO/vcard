@@ -38,6 +38,7 @@ function hashString($string){
 
 # Copy all required files from vCard System
 function copyAssets($path) {
+  Invoke-WebRequest -Uri "$($vCardUri)$($config.outlookLogo)" -OutFile (Join-Path $path "logo.jpg") | Out-null
   Invoke-WebRequest -Uri "$($vCardUri)/qrCodes/$($username).png" -OutFile (Join-Path $path "qrCode.png") | Out-null
   foreach($file in $config.filelist){
     Invoke-WebRequest -Uri "$($vCardUri)/assets/outlook-signature/$($file)" -OutFile (Join-Path $path "$($file)") | Out-null
@@ -65,16 +66,51 @@ Function Get-StringHash
 }
 
 #Windows bubble message
-function Send-Notification($title, $msg) {
+<# function Send-Notification($title, $msg) {
     Add-Type -AssemblyName System.Windows.Forms
     $global:balloon = New-Object System.Windows.Forms.NotifyIcon
     $path = (Get-Process -id $pid).Path
-    #$balloon.Icon = $(Join-Path $UNC "DATA\balloon.ico")
+    $balloon.Icon = $(Join-Path $UNC "DATA\balloon.ico")
     $balloon.BalloonTipText = $msg
     $balloon.BalloonTipTitle = $title
     $balloon.Visible = $true
     $balloon.ShowBalloonTip(10000)
     $balloon.Dispose()
+} #>
+function Send-Notification
+{
+
+[CmdletBinding()]
+param
+(
+[Parameter()]
+$Text,
+
+[Parameter()]
+$Title,
+
+#It must be 'None','Info','Warning','Error'
+$Icon = 'Info'
+)
+
+Add-Type -AssemblyName System.Windows.Forms
+
+#So your function would have to check whether there is already an icon that you can reuse.This is done by using a "shared variable", which really is a variable that has "script:" scope.
+if ($script:balloonToolTip -eq $null)
+{
+#we will need to add the System.Windows.Forms assembly into our PowerShell session before we can make use of the NotifyIcon class.
+$script:balloonToolTip = New-Object System.Windows.Forms.NotifyIcon
+}
+
+$path = Get-Process -id $pid | Select-Object -ExpandProperty Path
+$balloonToolTip.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($path)
+$balloonToolTip.BalloonTipIcon = $Icon
+$balloonToolTip.BalloonTipText = $Text
+$balloonToolTip.BalloonTipTitle = $Title
+$balloonToolTip.Visible = $true
+
+#I thought to display the tool tip for one seconds,so i used 1000 milliseconds when I call ShowBalloonTip.
+$balloonToolTip.ShowBalloonTip(1000)
 }
 
 # Create Signature

@@ -133,7 +133,7 @@ END:VCARD`
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.Q,
                 dotScale: 0.9,
-                backgroundImage: config.qrCodeLogo,
+                backgroundImage: `${path.join(__dirname, '..', 'public')}${config.qrCodeLogo}`,
                 backgroundImageAlpha: 0.5,
                 // Orange color - #EE7300
                 // Blue color - #2F3D58
@@ -163,7 +163,7 @@ END:VCARD`
                     logoHeight: 100, */
 
                     // Background Image
-                    backgroundImage: config.qrCodeLogo,
+                    backgroundImage: `${path.join(__dirname, '..', 'public')}${config.qrCodeLogo}`,
                     backgroundImageAlpha: 0.5,
 
                     PO: '#EE7300', // Global Posotion Outer color. if not set, the defaut is `colorDark`
