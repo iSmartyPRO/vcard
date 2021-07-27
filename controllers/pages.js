@@ -7,7 +7,7 @@ const config = require('../config')
 
 
 module.exports.home = (req, res) => {
-    res.render('home')
+    res.render('home', { config })
 }
 
 module.exports.detail = async(req, res) => {
