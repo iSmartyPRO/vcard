@@ -10,6 +10,7 @@
     "cronUpdateUsers": "0 4 * * *",
     "noAvatarIcon": "/assets/user_icon.svg",
     "vCardBackground": "/assets/bg.jpg",
+    "vCardBackgroundTransparency": 0.6,
     "public": {
         "corporateAddress": "Your company address here",
         "corporatePhone": "+7 (999) 123 45 67",
