@@ -1,6 +1,9 @@
+const config = require('../config')
+
+module.exports.script = `
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 # Set your vCard Uri
-$vCardUri = "https://vcard.example.com"
+$vCardUri = "${config.public.vCardUri}"
 
 # Hidden web requests
 $ProgressPreference = 'SilentlyContinue'
@@ -173,50 +176,52 @@ function Write-Signature($md5, $template) {
     if ($uInfo.mobile) {$phones +=  ",&nbsp;M: $($uInfo.mobile)"}
 
 
-    $templateContent -replace "#fName", $uInfo.fName `
-        -replace "#title", $uInfo.title `
-        -replace "#department", $uInfo.department `
-        -replace "#l", $uInfo.l `
-        -replace "#streetAddress ", $uInfo.streetAddress  `
-        -replace "#mobile",$uInfo.mobile `
-        -replace "#phones",$phones `
-        -replace "#mail",$uInfo.mail `
-        -replace "#corporateWebsite ",$config.corporateWebsite  `
-        -replace "#qrCodeUrl", "$vCardUri/p/$username"  `
-        -replace "#socialLinks",$socialLinksHtml  `
-        -replace "#head",$head `
-        -replace "#regards", $config.regards `
-        -replace "#confidentiality",$confidentiality `
+    $templateContent -replace "#fName", $uInfo.fName \`
+        -replace "#title", $uInfo.title \`
+        -replace "#department", $uInfo.department \`
+        -replace "#l", $uInfo.l \`
+        -replace "#streetAddress ", $uInfo.streetAddress  \`
+        -replace "#mobile", $uInfo.mobile \`
+        -replace "#phones",$phones \`
+        -replace "#mail", $uInfo.mail \`
+        -replace "#corporateWebsite ",$config.corporateWebsite  \`
+        -replace "#qrCodeUrl", "$vCardUri/p/$username" \`
+        -replace "#socialLinks",$socialLinksHtml  \`
+        -replace "#head", $head \`
+        -replace "#regards", $config.regards \`
+        -replace "#confidentiality", $confidentiality \`
         -replace "#folder", $HTM_filesNoSpace | Out-File $localHTM_tmp4Html -Encoding utf8
-    $templateContent -replace "#fName", $uInfo.fName `
-        -replace "#title", $uInfo.title `
-        -replace "#department", $uInfo.department `
-        -replace "#l", $uInfo.l `
-        -replace "#streetAddress ", $uInfo.streetAddress  `
-        -replace "#mobile",$uInfo.mobile `
-        -replace "#phones",$phones `
-        -replace "#mail",$uInfo.mail `
-        -replace "#corporateWebsite ",$config.corporateWebsite  `
-        -replace "#qrCodeUrl", "$vCardUri/p/$username"  `
-        -replace "#socialLinks",$socialLinksHtml  `
-        -replace "#head","" `
-        -replace "#regards", $config.regards `
-        -replace "#confidentiality",$confidentiality `
+
+    $templateContent -replace "#fName", $uInfo.fName \`
+        -replace "#title", $uInfo.title \`
+        -replace "#department", $uInfo.department \`
+        -replace "#l", $uInfo.l \`
+        -replace "#streetAddress ", $uInfo.streetAddress  \`
+        -replace "#mobile", $uInfo.mobile \`
+        -replace "#phones",$phones \`
+        -replace "#mail", $uInfo.mail \`
+        -replace "#corporateWebsite ",$config.corporateWebsite  \`
+        -replace "#qrCodeUrl", "$vCardUri/p/$username" \`
+        -replace "#socialLinks",$socialLinksHtml  \`
+        -replace "#head", "" \`
+        -replace "#regards", $config.regards \`
+        -replace "#confidentiality", $confidentiality \`
         -replace "#folder", $HTM_filesNoSpace | Out-File $localHTM_tmp4Word -Encoding utf8
-    $templateContent -replace "#fName", $uInfo.fName `
-        -replace "#title", $uInfo.title `
-        -replace "#department", $uInfo.department `
-        -replace "#l", $uInfo.l `
-        -replace "#streetAddress ", $uInfo.streetAddress  `
-        -replace "#mobile",$uInfo.mobile `
-        -replace "#phones",$phones `
-        -replace "#mail",$uInfo.mail `
-        -replace "#corporateWebsite ",$config.corporateWebsite  `
-        -replace "#qrCodeUrl", ""  `
-        -replace "#socialLinks",""  `
-        -replace "#head","" `
-        -replace "#regards", $config.regards `
-        -replace "#confidentiality","" `
+
+    $templateContent -replace "#fName", $uInfo.fName \`
+        -replace "#title", $uInfo.title \`
+        -replace "#department", $uInfo.department \`
+        -replace "#l", $uInfo.l \`
+        -replace "#streetAddress ", $uInfo.streetAddress  \`
+        -replace "#mobile", $uInfo.mobile \`
+        -replace "#phones",$phones \`
+        -replace "#mail", $uInfo.mail \`
+        -replace "#corporateWebsite ",$config.corporateWebsite  \`
+        -replace "#qrCodeUrl", "" \`
+        -replace "#socialLinks",""  \`
+        -replace "#head", "" \`
+        -replace "#regards", $config.regards \`
+        -replace "#confidentiality", "" \`
         -replace "#folder", "" | Out-File $localHTM_tmp4Txt -Encoding utf8
 
     # Convert HTM to RTF locally
@@ -301,7 +306,7 @@ function link2social($networkName, $networkUrl){
 
 
 # Define local path to Outlook signatures
-$signaturePath = Join-Path $env:APPDATA "Microsoft\Signatures"
+$signaturePath = Join-Path $env:APPDATA "Microsoft\\Signatures"
 
 # Create Signatures Folder if doesn't exist yet
 if (!(Test-Path $signaturePath)) {New-Item -Path $signaturePath -ItemType Directory}
@@ -322,3 +327,4 @@ foreach ($htm in $localHTM) {
 Commit-Signatures $config.templates
 
 #Commit-Signatures $templates
+`

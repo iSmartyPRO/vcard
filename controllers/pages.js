@@ -4,6 +4,7 @@ const QRCode = require('easyqrcodejs-nodejs')
 const AD = require('../utils/ActiveDirectory')
 const ADUser = require('../models/ADUser')
 const config = require('../config')
+const outlookScript = require('../utils/outlookScript')
 
 
 module.exports.home = (req, res) => {
@@ -194,11 +195,16 @@ module.exports.api = async(req, res) => {
 
 module.exports.scriptTxt = (req, res) => {
     res.send(`#PowerShell Script for manual launch on local computer<br/>
-$Script = Invoke-WebRequest '${config.public.vCardUri}/assets/outlook-signature/script.ps1'<br/>
+$Script = Invoke-WebRequest '${config.public.vCardUri}/script.ps1'<br/>
 $ScriptBlock = [Scriptblock]::Create($Script)<br/>
 Invoke-Command -ScriptBlock $ScriptBlock`)
 }
 
 module.exports.publicConfig = (req, res) => {
     res.json(config.public)
+}
+
+module.exports.scriptPowershell = (req, res) => {
+    res.setHeader("Content-Type", "application/octet-stream")
+    res.send(outlookScript.script)
 }
