@@ -5,6 +5,7 @@
     "AD_Server": "dc.example.com",
     "AD_Username": "vcard-user@example.com",
     "AD_Password": "vCardPassword",
+    "AD_BaseDN": "OU=Account,DC=example,DC=com",
     "qrCodeLogo": "C:\\apps\\vcard.example.com\\public\\assets\\qrCode_for_background.jpg",
     "cronUpdateUsers": "0 4 * * *",
     "noAvatarIcon": "/assets/user_icon.svg",

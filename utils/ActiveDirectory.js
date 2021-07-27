@@ -9,7 +9,7 @@ module.exports.getADUsers = () => {
     return new Promise((resolve, reject) => {
         var conf = {
             url: `ldap://${config.AD_Server}`,
-            baseDN: 'OU=Account,DC=gencoindustry,DC=com',
+            baseDN: config.AD_BaseDN,
             username: config.AD_Username,
             password: config.AD_Password,
             attributes: {
