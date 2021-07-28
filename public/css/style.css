@@ -25,13 +25,13 @@ ol {
     margin: 0 0 15px 0;
 }
 
-.uk-button-genco {
+.uk-button-vcard {
     background: #213250;
     color: #fff;
     text-transform: none;
 }
 
-.uk-button-genco:hover {
+.uk-button-vcard:hover {
     background: #ff6600;
 }
 

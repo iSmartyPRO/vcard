@@ -130,18 +130,18 @@ END:VCARD`
                 text: `${config.public.corporateWebsiteWProtcol}`,
                 width: 500,
                 height: 500,
-                colorDark: "#2F3D58",
-                colorLight: "#ffffff",
+                colorDark: config.qrCodeColorDark,
+                colorLight: config.qrCodeColorLight,
                 correctLevel: QRCode.CorrectLevel.Q,
                 dotScale: 0.9,
                 backgroundImage: `${path.join(__dirname, '..', 'public')}${config.qrCodeLogo}`,
                 backgroundImageAlpha: 0.5,
                 // Orange color - #EE7300
                 // Blue color - #2F3D58
-                PO: '#EE7300', // Global Position Outer color. if not set, the default is `colorDark`
-                PI: '#2F3D58', // Global Position Inner color. if not set, the default is `colorDark`
-                AO: '#EE7300', // Alignment Outer. if not set, the default is `colorDark`
-                AI: '#2F3D58', // Alignment Inner. if not set, the default is `colorDark`
+                PO: config.qrCodeOuterColor, // Global Position Outer color. if not set, the default is `colorDark`
+                PI: config.qrCodeInnerColor, // Global Position Inner color. if not set, the default is `colorDark`
+                AO: config.qrCodeOuterColor, // Alignment Outer. if not set, the default is `colorDark`
+                AI: config.qrCodeInnerColor, // Alignment Inner. if not set, the default is `colorDark`
             }
             let qrcode = new QRCode(options)
             qrcode.saveImage({
@@ -154,8 +154,8 @@ END:VCARD`
                     text: `${config.public.vCardUri}/p/${d[i].sAMAccountName}/`,
                     width: 500,
                     height: 500,
-                    colorDark: "#2F3D58",
-                    colorLight: "#ffffff",
+                    colorDark: config.qrCodeColorDark,
+                    colorLight: config.qrCodeColorLight,
                     correctLevel: QRCode.CorrectLevel.Q, // L, M, Q, H
                     // dotScale
                     dotScale: 0.9,
@@ -167,10 +167,10 @@ END:VCARD`
                     backgroundImage: `${path.join(__dirname, '..', 'public')}${config.qrCodeLogo}`,
                     backgroundImageAlpha: 0.5,
 
-                    PO: '#EE7300', // Global Posotion Outer color. if not set, the defaut is `colorDark`
-                    PI: '#2F3D58', // Global Posotion Inner color. if not set, the defaut is `colorDark`
-                    AO: '#EE7300', // Alignment Outer. if not set, the defaut is `colorDark`
-                    AI: '#2F3D58', // Alignment Inner. if not set, the defaut is `colorDark`
+                    PO: config.qrCodeOuterColor, // Global Position Outer color. if not set, the default is `colorDark`
+                    PI: config.qrCodeInnerColor, // Global Position Inner color. if not set, the default is `colorDark`
+                    AO: config.qrCodeOuterColor, // Alignment Outer. if not set, the default is `colorDark`
+                    AI: config.qrCodeInnerColor, // Alignment Inner. if not set, the default is `colorDark`
                 }
                 let qrcode = new QRCode(options)
                 await qrcode.saveImage({

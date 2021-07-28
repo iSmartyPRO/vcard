@@ -19,13 +19,13 @@ $username = $env:username
 # Get User Details from vCard System by API
 function vCard-GetUserInfo($username){
   $userInfo = Invoke-RestMethod -Uri "$($vCardUri)/api/$($username)"
+  if($userInfo.department) {$jobTitle = -join($($userInfo).title, ", ", $($userInfo).department)} else {$jobTitle = $($userInfo).title}
   $uDetails +=, [pscustomobject]@{
       fName         = $userInfo.description
       mail          = $userInfo.mail
       l             = $userInfo.l
       streetAddress = $userInfo.streetAddress
-      title         = $userInfo.title
-      department    = $userInfo.department
+      title         = $jobTitle
       mobile        = $userInfo.mobile
       pager         = $userInfo.pager
       whatsapp      = $userInfo.whatsapp
@@ -178,7 +178,6 @@ function Write-Signature($md5, $template) {
 
     $templateContent -replace "#fName", $uInfo.fName \`
         -replace "#title", $uInfo.title \`
-        -replace "#department", $uInfo.department \`
         -replace "#l", $uInfo.l \`
         -replace "#streetAddress ", $uInfo.streetAddress  \`
         -replace "#mobile", $uInfo.mobile \`
@@ -194,7 +193,6 @@ function Write-Signature($md5, $template) {
 
     $templateContent -replace "#fName", $uInfo.fName \`
         -replace "#title", $uInfo.title \`
-        -replace "#department", $uInfo.department \`
         -replace "#l", $uInfo.l \`
         -replace "#streetAddress ", $uInfo.streetAddress  \`
         -replace "#mobile", $uInfo.mobile \`
@@ -210,7 +208,6 @@ function Write-Signature($md5, $template) {
 
     $templateContent -replace "#fName", $uInfo.fName \`
         -replace "#title", $uInfo.title \`
-        -replace "#department", $uInfo.department \`
         -replace "#l", $uInfo.l \`
         -replace "#streetAddress ", $uInfo.streetAddress  \`
         -replace "#mobile", $uInfo.mobile \`

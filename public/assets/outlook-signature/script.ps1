@@ -16,12 +16,13 @@ $username = $env:username
 # Get User Details from vCard System by API
 function vCard-GetUserInfo($username){
   $userInfo = Invoke-RestMethod -Uri "$($vCardUri)/api/$($username)"
+  $department = $userInfo.department ? `, ${$userInfo.department}` : ''
   $uDetails +=, [pscustomobject]@{
       fName         = $userInfo.description
       mail          = $userInfo.mail
       l             = $userInfo.l
       streetAddress = $userInfo.streetAddress
-      title         = $userInfo.title
+      title         = `${$userInfo.title}${$department}`
       department    = $userInfo.department
       mobile        = $userInfo.mobile
       pager         = $userInfo.pager
