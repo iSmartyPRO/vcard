@@ -21,6 +21,9 @@ This application is designed to store and display Virtual Cards of Active Direct
 - edit config.json with your preferred data (including credentials to AD and MongoDB)
 - install dependencies with command npm i
 - run project in dev mode npm start dev
+- PowerShell Script which generates Outlook Signature http://localhost:8094/script.ps1
 - Enjoy
+
+
 
 ## readme will be updated soon
