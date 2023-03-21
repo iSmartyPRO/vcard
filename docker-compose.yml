@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=$MONGO_HOSTNAME
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$MONGO_DB 
+    ports:
+      - "7080:7080"
+    volumes:
+      - ./:/home/node/app
+      - ./node_modules:/home/node/app/node_modules
+    command: /home/node/app/node_modules/.bin/nodemon index.js
+networks:
+  default:
+    external: true
+    name: "docker-lan"

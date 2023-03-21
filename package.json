@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "activedirectory2": "^2.1.0",
+        "canvas": "^2.11.0",
         "easyqrcodejs": "^4.4.3",
         "easyqrcodejs-nodejs": "^4.3.2",
         "express": "^4.17.1",

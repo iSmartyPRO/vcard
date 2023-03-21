@@ -5,19 +5,28 @@ const exphbs = require("express-handlebars")
 const path = require("path")
 const config = require("./config")
 
+const {
+    MONGO_USERNAME,
+    MONGO_PASSWORD,
+    MONGO_HOSTNAME,
+    MONGO_PORT,
+    MONGO_DB
+  } = process.env;
+
 // Подключение к БД
-mongoose.connect(config.mongoURI, {
+const mongoURI = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=vcard` || config.mongoURI
+console.log({mongoURI})
+mongoose.connect(mongoURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true
     })
     .then(() => console.log('Mongo DB Connected'))
-    .catch(err => console.log(error))
+    .catch(err => console.log(err))
 
 
 const app = express()
 const pagesRoutes = require("./routes/pages")
-const { static } = require('express')
 
 const hbs = exphbs.create({
     defaultLayout: 'main',
