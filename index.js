@@ -14,5 +14,6 @@ cron.schedule(`${config.cronUpdateUsers}`, async function() {
         .then(json => console.log(json))
 })
 
+
 const port = process.env.PORT || config.APP_PORT
 app.listen(port, () => { console.log(`Server is running on port ${port}`) })

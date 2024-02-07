@@ -15,7 +15,6 @@ const {
 
 // Подключение к БД
 const mongoURI = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=vcard` || config.mongoURI
-console.log({mongoURI})
 mongoose.connect(mongoURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,

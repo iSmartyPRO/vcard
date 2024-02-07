@@ -22,7 +22,7 @@ module.exports.getADUsers = () => {
         }
         var ad = new ActiveDirectory(conf);
         var query = "(title=*)(description=*)";
-        ad.findUsers(query, true, function(err, users) {
+        ad.findUsers(query, false, function(err, users) {
             if (err) {
                 reject(err)
             }

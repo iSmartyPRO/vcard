@@ -17,7 +17,7 @@ module.exports.detail = async(req, res) => {
     let socialLinks = config.public.socialNetwork.networks
     if (user) {
         if (user.whatsapp) messengers.whatsapp = `https://wa.me/${user.whatsapp.replace(/\D/g, "")}`
-        messengers.telegram = user.telegram
+        if (user.whatsapp) messengers.telegram = `https://t.me/${user.telegram}`
         if (user.thumbnailPhoto) {
             var thumb = new Buffer.from(user.thumbnailPhoto.buffer, 'binary').toString('base64');
         }
@@ -195,9 +195,7 @@ module.exports.api = async(req, res) => {
 
 module.exports.scriptTxt = (req, res) => {
     res.send(`#PowerShell Script for manual launch on local computer<br/>
-$Script = Invoke-WebRequest '${config.public.vCardUri}/script.ps1'<br/>
-$ScriptBlock = [Scriptblock]::Create($Script)<br/>
-Invoke-Command -ScriptBlock $ScriptBlock`)
+iwr ${config.public.vCardUri}/script.ps1 | iex<br/>`)
 }
 
 module.exports.publicConfig = (req, res) => {

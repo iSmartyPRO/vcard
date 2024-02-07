@@ -73,7 +73,7 @@ Function Get-StringHash
     Add-Type -AssemblyName System.Windows.Forms
     $global:balloon = New-Object System.Windows.Forms.NotifyIcon
     $path = (Get-Process -id $pid).Path
-    $balloon.Icon = $(Join-Path $UNC "DATA\balloon.ico")
+    $balloon.Icon = $(Join-Path $UNC "DATA\\balloon.ico")
     $balloon.BalloonTipText = $msg
     $balloon.BalloonTipTitle = $title
     $balloon.Visible = $true
@@ -171,7 +171,8 @@ function Write-Signature($md5, $template) {
     }
 
     # Telephone line
-    $phones = "T: $($config.corporatePhone)"
+    $phones = ""
+    if ($uInfo.telephoneNumber) { $phones += "&nbsp;($($uInfo.telephoneNumber)), " }
     if ($uInfo.pager) { $phones += "&nbsp;($($uInfo.pager))" }
     if ($uInfo.mobile) {$phones +=  ",&nbsp;M: $($uInfo.mobile)"}
 
@@ -274,18 +275,18 @@ function Commit-Signatures($templates) {
             # Check md5 in hashtables to see if signature is updated and needs replacing
             if ($md5 -notin $localSignatures.md5) {
                 Write-Signature $md5 $template.name
-                Send-Notification "Company Signature Updated" "Outlook signature [$($template.name)] has been updated"
+                Send-Notification "Company Signature Updated" "Outlook signature has been updated"
             } else {
                 $findChanged = $localSignatures | Where-Object {$_.Name -match $template.name}
                 if (($findChanged.SAM -ne $SAM) -or ($findChanged.jobTitle -ne $jobTitle) -or ($findChanged.mobile -ne $mobile) -or ($findChanged.telephone -ne $telephone) -or ($findChanged.email -ne $email)) {
                     Write-Signature $md5 $template
-                    Send-Notification "Company Signature Details Updated" "Outlook signature [$($template.name)] has been updated to reflect changes of your profile in Active Directory (such as name, email, phone or mobile number)"
+                    Send-Notification "Company Signature Details Updated" "Outlook signature has been updated to reflect changes of your profile in Active Directory (such as name, email, phone or mobile number)"
                 }
             }
 
         } else { # Template file does not exist
             Write-Signature $md5 $template
-            Send-Notification "Company Signature Added" "A new Outlook signature [$($template.BaseName)] has been added to your Outlook."
+            Send-Notification "Company Signature Added" "A new Outlook signature has been added to your Outlook."
         }
 
     }

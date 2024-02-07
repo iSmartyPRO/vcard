@@ -27,3 +27,37 @@ This application is designed to store and display Virtual Cards of Active Direct
 
 
 ## readme will be updated soon
+
+
+# Docker
+
+## Install via docker
+
+### Install process
+npm install
+docker-compose up -d
+
+### View logs
+docker-compose logs
+
+## Clear docker
+
+docker-compose down
+docker image rm nodejs
+docker builder prune
+rm -rf node_modules
+
+
+## Others
+
+### Mass update address
+
+#### TPU
+Get-ADUser -Filter * -SearchBase "OU=Users,OU=ТПУ,OU=Accounts,DC=gescons,DC=ru" | Set-ADUser -StreetAddress "проспект Андропова 9, вл.1" "Москва" -Company 'ООО "ГЭС КОНСТРАКШН"' 
+
+#### PRB
+Get-ADUser -Filter * -SearchBase "OU=Users,OU=ПРБ,OU=Accounts,DC=gescons,DC=ru" | Set-ADUser -StreetAddress "ул. 1-я Бухвостова , дом 1" "Москва" -Company 'ООО "ГЭС КОНСТРАКШН"' -
+
+
+## Set Photo to user
+Set-ADUser username -Replace @{thumbnailPhoto=([byte[]](Get-Content "D:\username.jpg" -Encoding byte))}

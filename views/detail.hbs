@@ -22,7 +22,8 @@
         {{#if user.pager}}
         <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.public.corporatePhone}},
           ({{user.pager}})</p>
-        {{else}}
+        {{/if}}
+        {{#if user.corporatePhone}}
         <p class="uk-margin-remove"><span uk-icon="icon: receiver"></span> {{config.public.corporatePhone}}</p>
         {{/if}}
         {{#if user.mobile}}
