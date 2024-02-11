@@ -1,6 +1,6 @@
 .env
-node_modules
-config/config.json
-public/qrCodes/*.png
-public/vcfs/*.vcf
-public/assets/custom/
+src/node_modules
+src/config/config.json
+src/public/qrCodes/*.png
+src/public/vcfs/*.vcf
+src/public/assets/custom/

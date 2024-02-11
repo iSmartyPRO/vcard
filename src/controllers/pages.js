@@ -12,7 +12,7 @@ module.exports.home = (req, res) => {
 }
 
 module.exports.detail = async(req, res) => {
-    let user = await ADUser.findOne({ sAMAccountName: req.params.sAMAccountName }).lean()
+    let user = await ADUser.findOne({ sAMAccountName: req.params.sAMAccountName.toLowerCase() }).lean()
     let messengers = {}
     let socialLinks = config.public.socialNetwork.networks
     if (user) {
@@ -29,17 +29,21 @@ module.exports.detail = async(req, res) => {
 }
 
 module.exports.update = async(req, res) => {
+    console.log("Update started")
     let result = {}
     await AD.getADUsers().then(async(d) => {
         result.adUserCount = d.length
 
-        if (d.length) {
+        if (d.length) { 
             // Delete all docs in Database
-            await ADUser.deleteMany({}, (err) => {
-                if (err) console.warn("Error: ", err)
-                result.deletedAllDocs = 'Deleted all Docs'
-            })
-            result.deletedAllDocsDB = 'Deleted all records in database'
+            await ADUser.deleteMany({})
+                .then(function(){
+                    console.log("All Docs deleted")
+                    result.deletedAllDocs = 'Deleted all Docs'
+                    result.deletedAllDocsDB = 'Deleted all records in database'
+                })
+                .catch(err => console.log(err))
+                
 
             // Delete all vcf files
             fs.readdir(path.join(__dirname, '..', 'public', 'vcfs'), (err, files) => {
@@ -82,7 +86,7 @@ module.exports.update = async(req, res) => {
             for (let i = 0; i < d.length; i++) {
                 await new ADUser({
                     dn: d[i].dn,
-                    sAMAccountName: d[i].sAMAccountName,
+                    sAMAccountName: d[i].sAMAccountName.toLowerCase(),
                     mail: d[i].mail,
                     displayName: d[i].displayName,
                     description: d[i].description,
@@ -120,7 +124,7 @@ TEL;WORK;VOICE:${config.public.corporatePhone}${vCardAdrWork}
 URL;WORK:https://${config.public.corporateWebsite}
 EMAIL;PREF;INTERNET:${d[i].mail}${vCardThumb}
 END:VCARD`
-                await fs.writeFileSync(path.join(__dirname, '..', 'public', 'vcfs', `${d[i].sAMAccountName}.vcf`), vCardContent)
+                await fs.writeFileSync(path.join(__dirname, '..', 'public', 'vcfs', `${d[i].sAMAccountName.toLowerCase()}.vcf`), vCardContent)
             }
             result.generateVcf = "Generated VCF files"
 
@@ -158,7 +162,7 @@ END:VCARD`
                     colorLight: config.qrCodeColorLight,
                     correctLevel: QRCode.CorrectLevel.Q, // L, M, Q, H
                     // dotScale
-                    dotScale: 0.9,
+                    dotScale: 0.7,
                     /*   logo: `assets/${username}.jpg`,
                     logoWidth: 100,
                     logoHeight: 100, */
@@ -174,7 +178,7 @@ END:VCARD`
                 }
                 let qrcode = new QRCode(options)
                 await qrcode.saveImage({
-                    path: path.join(__dirname, '..', 'public', 'qrCodes', `${d[i].sAMAccountName}.png`),
+                    path: path.join(__dirname, '..', 'public', 'qrCodes', `${d[i].sAMAccountName.toLowerCase()}.png`),
                 })
             }
             result.generateQRCodes = 'Generated QR Codes files'

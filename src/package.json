@@ -1,0 +1,29 @@
+{
+    "name": "vCard-System",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^3.0.3"
+    },
+    "dependencies": {
+        "activedirectory2": "^2.2.0",
+        "easyqrcodejs-nodejs": "^4.5.2",
+        "express": "^4.18.2",
+        "express-handlebars": "^7.1.2",
+        "mongo": "^0.1.0",
+        "mongoose": "^8.1.1",
+        "morgan": "^1.10.0",
+        "node-cron": "^3.0.3",
+        "node-fetch": "^3.3.2",
+        "nodemon": "^3.0.3",
+        "uikit": "^3.18.2"
+    }
+}
