@@ -199,7 +199,7 @@ module.exports.api = async(req, res) => {
 
 module.exports.scriptTxt = (req, res) => {
     res.send(`#PowerShell Script for manual launch on local computer<br/>
-iwr ${config.public.vCardUri}/script.ps1 | iex<br/>`)
+iwr ${config.public.vCardUri}/ps | iex<br/>`)
 }
 
 module.exports.publicConfig = (req, res) => {
