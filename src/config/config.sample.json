@@ -9,6 +9,7 @@
     "AD_Username": "vcard-user@example.com",
     "AD_Password": "vCardPassword",
     "AD_BaseDN": "OU=Account,DC=example,DC=com",
+    "excludeList": [],
     "qrCodeLogo": "/assets/qrCodeLogo_200x200.jpg",
     "cronUpdateUsers": "0 4 * * *",
     "noAvatarIcon": "/assets/user_icon.svg",
