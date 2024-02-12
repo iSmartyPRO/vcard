@@ -42,7 +42,7 @@ function hashString($string){
 # Copy all required files from vCard System
 function copyAssets($path) {
   Invoke-WebRequest -Uri "$($vCardUri)$($config.outlookLogo)" -OutFile (Join-Path $path "logo.jpg") | Out-null
-  Invoke-WebRequest -Uri "$($vCardUri)/qrCodes/$($username).png" -OutFile (Join-Path $path "qrCode.png") | Out-null
+  Invoke-WebRequest -Uri "$($vCardUri)/qrCodes/$($username.toLower()).png" -OutFile (Join-Path $path "qrCode.png") | Out-null
   foreach($file in $config.filelist){
     Invoke-WebRequest -Uri "$($vCardUri)/assets/outlook-signature/$($file)" -OutFile (Join-Path $path "$($file)") | Out-null
   }

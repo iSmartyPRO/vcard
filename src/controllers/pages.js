@@ -16,8 +16,9 @@ module.exports.detail = async(req, res) => {
     let messengers = {}
     let socialLinks = config.public.socialNetwork.networks
     if (user) {
+        console.log(user)
         if (user.whatsapp) messengers.whatsapp = `https://wa.me/${user.whatsapp.replace(/\D/g, "")}`
-        if (user.whatsapp) messengers.telegram = `https://t.me/${user.telegram}`
+        if (user.telegram) messengers.telegram = `https://t.me/${user.telegram}`
         if (user.thumbnailPhoto) {
             var thumb = new Buffer.from(user.thumbnailPhoto.buffer, 'binary').toString('base64');
         }
@@ -193,7 +194,7 @@ END:VCARD`
 }
 
 module.exports.api = async(req, res) => {
-    let user = await ADUser.findOne({ sAMAccountName: req.params.sAMAccountName }).select('-_id displayName description mail mobile pager title department l streetAddress telegram whatsapp').lean()
+    let user = await ADUser.findOne({ sAMAccountName: req.params.sAMAccountName.toLowerCase() }).select('-_id displayName description mail mobile pager title department l streetAddress telegram whatsapp').lean()
     return res.json(user)
 }
 
