@@ -30,6 +30,7 @@ function vCard-GetUserInfo($username){
       pager         = $userInfo.pager
       whatsapp      = $userInfo.whatsapp
       telegram      = $userInfo.telegram
+      telephoneNumber = $userInfo.telephoneNumber
   }
   return $uDetails
 }
@@ -172,10 +173,15 @@ function Write-Signature($md5, $template) {
 
     # Telephone line
     $phones = ""
-    if ($uInfo.telephoneNumber) { $phones += "&nbsp;($($uInfo.telephoneNumber)), " }
-    if ($uInfo.pager) { $phones += "&nbsp;($($uInfo.pager))" }
-    if ($uInfo.mobile) {$phones +=  ",&nbsp;M: $($uInfo.mobile)"}
-
+    if ($uInfo.telephoneNumber -AND $uInfo.pager) { 
+      $phones += "T: $($uInfo.telephoneNumber) ($($uInfo.pager))" 
+    } elseif($uInfo.telephoneNumber) {
+      $phones += "T: $($uInfo.telephoneNumber)" 
+    }
+    if($uInfo.telephoneNumber -AND $uInfo.mobile) {
+      $phones += ", "
+    }
+    if ($uInfo.mobile) {$phones +=  "M: $($uInfo.mobile)"}
 
     $templateContent -replace "#fName", $uInfo.fName \`
         -replace "#title", $uInfo.title \`

@@ -194,7 +194,7 @@ END:VCARD`
 }
 
 module.exports.api = async(req, res) => {
-    let user = await ADUser.findOne({ sAMAccountName: req.params.sAMAccountName.toLowerCase() }).select('-_id displayName description mail mobile pager title department l streetAddress telegram whatsapp').lean()
+    let user = await ADUser.findOne({ sAMAccountName: req.params.sAMAccountName.toLowerCase() }).select('-_id displayName description mail telephoneNumber pager mobile title department l streetAddress telegram whatsapp').lean()
     return res.json(user)
 }
 
