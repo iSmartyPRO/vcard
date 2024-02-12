@@ -11,7 +11,10 @@ $vCardUri = "${config.public.vCardUri}"
 # Hidden web requests
 $ProgressPreference = 'SilentlyContinue'
 
-# Get configuration
+$checkUser = Invoke-RestMethod -Uri "$($vCardUri)/api/$($username)"
+
+if($checkUser) {
+  # Get configuration
 $config = Invoke-RestMethod -Uri "$($vCardUri)/config"
 
 # Get User name
@@ -334,4 +337,6 @@ foreach ($htm in $localHTM) {
 Commit-Signatures $config.templates
 
 #Commit-Signatures $templates
+
+}
 `
