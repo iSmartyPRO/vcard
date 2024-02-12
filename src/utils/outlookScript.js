@@ -3,6 +3,9 @@ const config = require('../config')
 module.exports.script = `
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 # Set your vCard Uri
+if((Get-ItemProperty -Path "HKCU:\\SOFTWARE\\Microsoft\\Internet Explorer\\Main").DisableFirstRunCustomize -ne 2) {
+  Set-ItemProperty -Path "HKCU:\\SOFTWARE\\Microsoft\\Internet Explorer\\Main" -Name "DisableFirstRunCustomize" -Value 2
+}
 $vCardUri = "${config.public.vCardUri}"
 
 # Hidden web requests
