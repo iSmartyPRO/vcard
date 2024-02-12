@@ -26,6 +26,4 @@ RUN apk --no-cache add ca-certificates wget  && \
     npm install \
     ;
 
-EXPOSE 7080
-
 CMD [ "./node_modules/.bin/nodemon", "index" ]
