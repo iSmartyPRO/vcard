@@ -63,6 +63,17 @@ Get-ADUser -Filter * -SearchBase "OU=Users,OU=ПРБ,OU=Accounts,DC=gescons,DC=r
 Set-ADUser username -Replace @{thumbnailPhoto=([byte[]](Get-Content "D:\username.jpg" -Encoding byte))}
 
 Create user in mongodb
+Connect to Mongo
+```
+# mongo vcard -u username -p password
+```
+create user 
+```
+> db = db.getSiblingDB('vcard')
+> db.createUser( { user: "vcard", pwd: "vCardParolASAAcc3ss", roles: [ "readWrite", "dbAdmin" ]} )
+```
+
+Optional
 ```
 use vcard
 db.createUser(
